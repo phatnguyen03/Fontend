@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>Checkout example · Bootstrap v5.0</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+
+
+
+
+  <!-- JQuery CSS -->
+  <link rel="stylesheet" href="assets/dist/css/jquery-ui.css">
+  <!-- Bootstrap core CSS -->
+  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="form-validation.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <h2>Checkout form</h2>
+        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group
+          has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Giỏ hàng</span>
+            <span id="totSP" class="badge bg-primary rounded-pill">0</span>
+          </h4>
+          <ul id="ulCart" class="list-group mb-3">            
+          </ul>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Tổng tiền (VND)</span>
+              <strong id="txtTongTien">0,00</strong>
+            </li>
+          </ul>
+          
+
+          <form class="card p-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Promo code">
+              <button type="submit" class="btn btn-secondary">Redeem</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">Billing address</h4>
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-10">
+                <label for="txtSanPham" class="form-label">Sản phẩm</label>
+                <input type="text" class="form-control" id="txtSanPham" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  yêu cầu nhập Sản phẩm
+                </div>
+              </div>
+
+              <div class="col-sm-2">
+                <label for="txtSL" class="form-label">Số lượng</label>
+                <input type="number" class="form-control" id="txtSL" placeholder="" value="1" required>
+                <div class="invalid-feedback">
+                  yêu cầu nhập Số lượng
+                </div>
+              </div>
+
+            </div>
+            <hr class="my-4">
+            <p id="lblChon"></p>
+            <button onclick="themSP();" class="w-100 btn btn-primary btn-lg" type="button">Thêm Sản phẩm vào giỏ
+              hàng</button>
+
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2017–2021 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <script src="assets/dist/js/jquery-3.6.4.js"></script>
+  <script src="assets/dist/js/jquery-ui.js"></script>
+  <script src="assets/dist/js/jquery.tmpl.js"></script>
+  <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="form-validation.js"></script>
+  <script src="cart.js"></script>
+  <script id="cartTemplate" type="text/x-jQuery-tmpl">
+    <li class="list-group-item d-flex justify-content-between lh-sm">
+      <div>
+        <h6 class="my-0">${maSP}</h6>
+        <p class="text-muted text-small">${tenSP}           
+          <br/> SL : ${SoLuong} (${DVT})
+        </p>
+      </div>
+      <p class="text-muted" style="text-align: right; font-size:0.85em;">${formatNumber(ThanhTien)} VNĐ
+        <br/>
+        <button onclick="xoaSP('${maSP}')" class="btn-small btn-danger">X</button>
+      </p>      
+    </li>
+  </script>
+</body>
+
+</html>
